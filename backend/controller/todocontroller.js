@@ -3,7 +3,7 @@ import Todo from "../model/todomodel.js";
 // Get all todos
 export const getTodos = async (req, res) => {
   try {
-    const todos = await Todo.find();
+    const todos = await Todo.find().sort({ createdAt: -1 });
     res.json(todos);
   } catch (err) {
     res.status(500).json({ message: "Server Error", error: err.message });
