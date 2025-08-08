@@ -11,6 +11,7 @@ function Todo() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [editId, setEditId] = useState(null);
+  const [deleteId, setDeleteId] = useState(null);
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -56,12 +57,12 @@ function Todo() {
   };
 
   const handleDeleteUser = (id) => {
-    setEditId(id);
+    setDeleteId(id);
     setIsSureModalOpen(true);
   };
 
   const handleConfirmDelete = () => {
-    dispatch(deleteUser(editId)).then(() => {
+    dispatch(deleteUser(deleteId)).then(() => {
       setIsSureModalOpen(false);
       setIsDeleteModalOpen(true);
       setEditId(null);
